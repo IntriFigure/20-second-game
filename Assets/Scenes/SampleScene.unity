@@ -783,9 +783,12 @@ GameObject:
   m_Component:
   - component: {fileID: 289868117}
   - component: {fileID: 289868118}
-  - component: {fileID: 289868120}
   - component: {fileID: 289868119}
+<<<<<<< HEAD
   - component: {fileID: 289868121}
+=======
+  - component: {fileID: 289868120}
+>>>>>>> 3c683e418a8ac1649082756aad1ca35bda3aae02
   m_Layer: 0
   m_Name: Car 1
   m_TagString: Untagged

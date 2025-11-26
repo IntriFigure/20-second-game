@@ -784,11 +784,8 @@ GameObject:
   - component: {fileID: 289868117}
   - component: {fileID: 289868118}
   - component: {fileID: 289868119}
-<<<<<<< HEAD
   - component: {fileID: 289868121}
-=======
   - component: {fileID: 289868120}
->>>>>>> 3c683e418a8ac1649082756aad1ca35bda3aae02
   m_Layer: 0
   m_Name: Car 1
   m_TagString: Untagged
@@ -1231,7 +1228,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0fc8281803b448b42bef213c3243bf30, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CameraFollow
-  carPos: {fileID: 289868117}
+  carPos: {fileID: 1847154551}
   additionalOffset: {x: 0, y: 7, z: -7}
 --- !u!1 &371628693
 GameObject:

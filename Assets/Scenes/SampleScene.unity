@@ -1165,13 +1165,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 330585543}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.25881904, y: 0.00016259933, z: -0.0006068289, w: 0.96592563}
+  m_LocalRotation: {x: 0.19080889, y: 0.00011987294, z: -0.00061669305, w: 0.98162705}
   m_LocalPosition: {x: -8, y: 22.91, z: -7.7}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 30, y: 0, z: -0.072}
+  m_LocalEulerAnglesHint: {x: 22, y: 0, z: -0.072}
 --- !u!114 &330585547
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1228,7 +1228,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0fc8281803b448b42bef213c3243bf30, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CameraFollow
-  carPos: {fileID: 1847154551}
+  carPos: {fileID: 289868117}
   additionalOffset: {x: 0, y: 7, z: -7}
 --- !u!1 &371628693
 GameObject:

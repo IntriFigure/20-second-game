@@ -9,7 +9,8 @@ public class PlayerRecorder : MonoBehaviour
     private int index = 0;
     private bool isReplaying = false;
 
-    private PlayerMovement movement; // reference to movement script
+    // reference to movement script
+    private PlayerMovement movement; 
 
     void Start()
     {
@@ -51,6 +52,7 @@ public class PlayerRecorder : MonoBehaviour
         isReplaying = false;
 
         if (movement != null)
-            movement.enabled = true; // re-enable movement after replay
+            // re-enable movement after replay
+            movement.enabled = true; 
     }
 }

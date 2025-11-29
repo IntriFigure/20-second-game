@@ -8,7 +8,7 @@ public class ObjectRecorder : MonoBehaviour
 
     [Header("Recording Settings")]
     public bool isRecording = true;
-    public float recordInterval = 0f; // 0 = every frame
+    public float recordInterval = 0f;
 
     [HideInInspector]
     public List<FrameData> recordedFrames = new List<FrameData>();

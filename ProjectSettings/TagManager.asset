@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Ground
   - Wall
+  - BonceWall
+  - PizzaBox
   layers:
   - Default
   - TransparentFX

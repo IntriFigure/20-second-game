@@ -38,6 +38,7 @@ public class newCarController : MonoBehaviour
         HandleMotorPower();
         HandleWheelPos();
         ApplySteering();
+        
     }
 
     void GetInput()
@@ -48,11 +49,13 @@ public class newCarController : MonoBehaviour
 
     void HandleMotorPower()
     {
+        verticalInput = 1f;
         RRWheel.motorTorque = verticalInput * gasInput;
-        RLWheel.motorTorque = horizontalInput * gasInput;
+        RLWheel.motorTorque = verticalInput * gasInput;
     }
     void ApplySteering()
     {
+
         currentsteeringAngle = maxSteeringAngle * horizontalInput;
         FLWheel.steerAngle = currentsteeringAngle;
         FRWheel.steerAngle = currentsteeringAngle;

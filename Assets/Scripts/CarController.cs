@@ -19,7 +19,7 @@ public class CarController : MonoBehaviour
 
     private Vector3 MoveForce;
 
-    
+
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -50,7 +50,7 @@ public class CarController : MonoBehaviour
         // get current Y rotation in the world spaces
         float yRotation = transform.eulerAngles.y;
         // convert 270 → -90 so that it can be read as  180 and -180 
-        if (yRotation > 180f) yRotation -= 360f;   
+        if (yRotation > 180f) yRotation -= 360f;
         // add steering into the yRotation to convert into the 180 and -180 
         yRotation += steerInput * MoveForce.magnitude * SteerAngle * Time.deltaTime;
         // clamp yRotation to between maxTurnAngle in degree
@@ -88,7 +88,7 @@ public class CarController : MonoBehaviour
                 //So i create a bigger boxcollider to dectect on trigger collision for a faster to respones.
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Wall"))
+        if (other.CompareTag("Wall") || (other.CompareTag("BonceWall")))
         {
             Debug.Log("Hit");
             SceneManager.LoadScene("SampleScene");

@@ -9,6 +9,8 @@ public class CarMovement : MonoBehaviour
     float horizontalInput;
     float verticalInput;
     public bool grounded;
+    public float groundCheckDistance = 0.2f;
+    public LayerMask groundLayer;
 
     Rigidbody rb;
 
@@ -34,6 +36,8 @@ public class CarMovement : MonoBehaviour
     private void Update()
     {
         MyInput();
+        grounded = Physics.Raycast(transform.position, Vector3.down, groundCheckDistance, groundLayer);
+
     }
     void FixedUpdate()
     {
@@ -45,11 +49,21 @@ public class CarMovement : MonoBehaviour
     {
         // Always move forward if on ground
         if (grounded)
-            verticalInput = 1f;
-        else verticalInput = 0;
+        {
+            // Automatically moving Forward //!!! goesfaster as time goes on!!!
+            rb.AddForce(orientation.forward * moveSpeed, ForceMode.Acceleration);
+        }
 
-        // Automatically moving Forward //!!! goesfaster as time goes on!!!
-        rb.AddForce(orientation.forward * moveSpeed, ForceMode.Acceleration);
+        float maxSpeed = 20f; // your speed limit
+        Vector3 flatVel = new Vector3(rb.linearVelocity.x, 0f, rb.linearVelocity.z); // ignore vertical velocity
+
+        if (flatVel.magnitude > maxSpeed)
+        {
+            // Clamp only horizontal movement
+            flatVel = flatVel.normalized * maxSpeed;
+            rb.linearVelocity = new Vector3(flatVel.x, rb.linearVelocity.y, flatVel.z);
+        }
+
 
         // Steering rotation
         rb.MoveRotation(rb.rotation * Quaternion.Euler(0f, horizontalInput * turnStrength, 0f));
@@ -70,16 +84,9 @@ public class CarMovement : MonoBehaviour
 
     }
 
-    // no movement when airborn!
+    // no movement when airborn! // use raycast next time
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.collider.CompareTag("Ground"))
-        {
-            grounded = true;
-        } else
-        {
-            grounded = false;
-        }
 
         if (collision.collider.CompareTag("Wall"))
         {
@@ -88,8 +95,4 @@ public class CarMovement : MonoBehaviour
         }
     }
     // double check just incase //no movement when airborn!
-    private void OnCollisionExit(Collision collision)
-    {
-        grounded = false;
-    }
 }

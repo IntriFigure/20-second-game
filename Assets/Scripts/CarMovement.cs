@@ -5,6 +5,7 @@ public class CarMovement : MonoBehaviour
 {
     [Header("Speed")]
     public float moveSpeed;
+    public float maxSpeed = 20f;
     public Transform orientation;
     float horizontalInput;
     float verticalInput;
@@ -18,7 +19,6 @@ public class CarMovement : MonoBehaviour
     public float driftFactor = 0.95f;   // how much sideways grip is removed
     public float turnStrength = 5f;
     public float maxTurnAngle;
-    
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -54,7 +54,7 @@ public class CarMovement : MonoBehaviour
             rb.AddForce(orientation.forward * moveSpeed, ForceMode.Acceleration);
         }
 
-        float maxSpeed = 20f; // your speed limit
+         // your speed limit
         Vector3 flatVel = new Vector3(rb.linearVelocity.x, 0f, rb.linearVelocity.z); // ignore vertical velocity
 
         if (flatVel.magnitude > maxSpeed)

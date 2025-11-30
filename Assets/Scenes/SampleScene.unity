@@ -434,7 +434,7 @@ Transform:
   m_GameObject: {fileID: 44799962}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0.7095396, z: -0, w: 0.7046656}
-  m_LocalPosition: {x: -39.3, y: 7.8243, z: 648.3978}
+  m_LocalPosition: {x: -46.4, y: 7.8243, z: 648.3978}
   m_LocalScale: {x: 1, y: 26.353645, z: 62.039303}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1312,31 +1312,16 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-
-  m_GameObject: {fileID: 330585543}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0fc8281803b448b42bef213c3243bf30, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::CameraFollow
-  carPos: {fileID: 1847154551}
-  additionalOffset: {x: 0, y: 7, z: -7}
-=======
-=======
->>>>>>> Stashed changes
-
   serializedVersion: 6
   m_Component:
   - component: {fileID: 342815538}
   m_Layer: 0
-  m_Name: Wheels Mesh
+  m_Name: 
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &342815538
 Transform:
   m_ObjectHideFlags: 0
@@ -1356,11 +1341,6 @@ Transform:
   - {fileID: 103674029}
   m_Father: {fileID: 1847154551}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-<<<<<<< Updated upstream
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
-
 --- !u!1 &371628693
 GameObject:
   m_ObjectHideFlags: 0
@@ -4304,7 +4284,7 @@ Transform:
   m_GameObject: {fileID: 1178408149}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0.7095396, z: -0, w: 0.7046656}
-  m_LocalPosition: {x: -14.8, y: 7.8243, z: 1059.3884}
+  m_LocalPosition: {x: -14.8, y: 7.8243, z: 947.3}
   m_LocalScale: {x: 1, y: 26.353645, z: 10.428}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -5589,7 +5569,7 @@ Transform:
   m_GameObject: {fileID: 1690889662}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -8.8, y: 11.5, z: 807.7}
+  m_LocalPosition: {x: -8.8, y: 11.5, z: 944.8}
   m_LocalScale: {x: 21.0814, y: 11.357412, z: 2.2609854}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -5921,7 +5901,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd728a8a3650102428cffe34a337cd78, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CarMovement
-  moveSpeed: 25
+  moveSpeed: 30
+  maxSpeed: 60
   orientation: {fileID: 1847154551}
   grounded: 0
   groundCheckDistance: 1.8
@@ -5931,6 +5912,7 @@ MonoBehaviour:
   driftFactor: 1
   turnStrength: 2
   maxTurnAngle: 90
+  turnSmoothness: 10
 --- !u!65 &1847154549
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -6102,7 +6084,7 @@ Transform:
   m_GameObject: {fileID: 1850992552}
   serializedVersion: 2
   m_LocalRotation: {x: 0.44959712, y: 0.5426011, z: 0.4527066, w: 0.54635453}
-  m_LocalPosition: {x: 9.2, y: 3, z: 223}
+  m_LocalPosition: {x: 93, y: 3, z: 247}
   m_LocalScale: {x: 2.294, y: 12.265991, z: 105.50231}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -7076,7 +7058,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0.7095396, z: -0, w: 0.7046656}
   m_LocalPosition: {x: 6.8582325, y: 7.8243, z: 455.60336}
-  m_LocalScale: {x: 1, y: 26.353645, z: 10.428}
+  m_LocalScale: {x: 1, y: 26.353645, z: 31.99102}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -7367,7 +7349,8 @@ MonoBehaviour:
   mouseSensitivity: 100
   pizzaBox: {fileID: 9083555145772497612, guid: 39289c18c60c8f6419965de744824161, type: 3}
   ThrowOrigin: {fileID: 900921530}
-  throwForce: 40
+  throwForce: 90
+  throwUpwardForce: 10
   canShoot: 1
   ThrowRate: 1
 --- !u!4 &2144291122

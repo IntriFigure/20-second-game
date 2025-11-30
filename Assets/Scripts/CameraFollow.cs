@@ -20,6 +20,7 @@ public class CameraFollow : MonoBehaviour
     public GameObject pizzaBox;
     public Transform ThrowOrigin;
     public float throwForce = 10f;
+    public float throwUpwardForce = 10f;
     public bool canShoot = true;
     public float ThrowRate;
 
@@ -64,9 +65,18 @@ public class CameraFollow : MonoBehaviour
     {
         GameObject prefb =Instantiate(pizzaBox, ThrowOrigin.position, Quaternion.identity);
         Rigidbody pizzaRB = prefb.GetComponent<Rigidbody>();
+
+        Vector3 forceDirection = transform.forward;
+        RaycastHit hit;
+        if (Physics.Raycast(transform.position, transform.forward, out hit, 500f))
+        {
+            forceDirection = (hit.point - ThrowOrigin.position).normalized;
+        }
+
         if (pizzaRB != null)
         {
-            pizzaRB.AddForce(ThrowOrigin.forward * throwForce, ForceMode.Impulse);
+            Vector3 forceToAdd = forceDirection * throwForce;// + transform.up * throwUpwardForce;
+            pizzaRB.AddForce(forceToAdd, ForceMode.Impulse);
         }
             
 

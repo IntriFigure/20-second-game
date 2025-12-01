@@ -871,8 +871,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 210624314}
+  - component: {fileID: 210624316}
+  - component: {fileID: 210624315}
   m_Layer: 0
-  m_Name: ReplayController
+  m_Name: ReplayManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -893,6 +895,35 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &210624315
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 210624313}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 75dabbfe362e6d64d8cccc9aa6d0137f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ReplayController
+  replay: {fileID: 1847154552}
+--- !u!114 &210624316
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 210624313}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a9242ad371801f45a8825dba4298f09, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ObjectRecorder
+  target: {fileID: 1847154551}
+  isRecording: 1
+  recordInterval: 0
+  recordedFrames: []
 --- !u!1 &289868116
 GameObject:
   m_ObjectHideFlags: 0
@@ -5913,6 +5944,7 @@ GameObject:
   - component: {fileID: 1847154550}
   - component: {fileID: 1847154549}
   - component: {fileID: 1847154548}
+  - component: {fileID: 1847154552}
   m_Layer: 0
   m_Name: Car 2 (W/Rigidbody)
   m_TagString: Untagged
@@ -6009,6 +6041,21 @@ Transform:
   - {fileID: 1874825851}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1847154552
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1847154547}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e4bd957c3781e1c4090224745a0ed1bd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerRecorder
+  recorder: {fileID: 210624316}
+  targetToReplay: {fileID: 1847154551}
+  playbackSpeed: 1
 --- !u!1 &1850992552
 GameObject:
   m_ObjectHideFlags: 0

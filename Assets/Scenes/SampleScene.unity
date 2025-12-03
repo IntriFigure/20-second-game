@@ -1383,7 +1383,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &342815538
 Transform:
   m_ObjectHideFlags: 0
@@ -3705,7 +3705,7 @@ BoxCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1083350047}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: b2b8f1a5c4c35c342baf3980caafbe3b, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -5006,7 +5006,7 @@ BoxCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1475452118}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: b2b8f1a5c4c35c342baf3980caafbe3b, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -5974,7 +5974,7 @@ MonoBehaviour:
     m_Bits: 16
   driftFactor: 1
   turnStrength: 2
-  maxTurnAngle: 90
+  maxTurnAngle: 45
 --- !u!65 &1847154549
 BoxCollider:
   m_ObjectHideFlags: 0

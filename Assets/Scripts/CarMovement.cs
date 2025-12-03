@@ -91,7 +91,7 @@ public class CarMovement : MonoBehaviour
         if (collision.collider.CompareTag("Wall"))
         {
             Debug.Log("DIE");
-            SceneManager.LoadScene("SampleScene");
+            //SceneManager.LoadScene("SampleScene");
         }
     }
     // double check just incase //no movement when airborn!

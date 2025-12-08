@@ -53,7 +53,7 @@ public class CarMovement : MonoBehaviour
         zSteerRotation = steeringWheel.rotation.eulerAngles.z;
         if (zSteerRotation > 180f) zSteerRotation -= 360f;
 
-        zSteerRotation = carRotationY;
+        zSteerRotation = carRotationY *-1;
         steeringWheel.localRotation = Quaternion.Euler(31.025f, 0f, zSteerRotation);
     }
 

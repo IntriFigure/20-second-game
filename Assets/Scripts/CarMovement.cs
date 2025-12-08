@@ -30,6 +30,8 @@ public class CarMovement : MonoBehaviour
     public bool hitWall;
     public float yRotation;
 
+    public Vector3 carD;
+
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -53,7 +55,7 @@ public class CarMovement : MonoBehaviour
         zSteerRotation = steeringWheel.rotation.eulerAngles.z;
         if (zSteerRotation > 180f) zSteerRotation -= 360f;
 
-        zSteerRotation = carRotationY;
+        zSteerRotation = carRotationY * -1;
         steeringWheel.localRotation = Quaternion.Euler(31.025f, 0f, zSteerRotation);
     }
 
@@ -130,13 +132,13 @@ public class CarMovement : MonoBehaviour
         {
             // once the collider hit the wall tag/layer
             // reorient player back to face forward
-            rb.MoveRotation(Quaternion.Euler(0f, 0f, 0f));
+            rb.MoveRotation(Quaternion.Euler(carD));
 
             /*if (yRotation > 10)
             {
                 rb.MoveRotation(Quaternion.Euler(0f, 0f, 0f));
                 // add this back when bounce back is added
-                rb.AddTorque(Vector3.down * 200f, ForceMode.Impulse);
+                rb.AddTorque(Vector3.up * 10f, ForceMode.Impulse);
                 Debug.Log("Rotate Left");
             }
             else 
@@ -144,7 +146,7 @@ public class CarMovement : MonoBehaviour
             {
                 rb.MoveRotation(Quaternion.Euler(0f, 0f, 0f));
                 // add this back when bounce back is added
-                rb.AddTorque(Vector3.up * 200f, ForceMode.Impulse);
+                rb.AddTorque(Vector3.down * 10f, ForceMode.Impulse);
                 Debug.Log("Rotate Right");
             }*/
         }

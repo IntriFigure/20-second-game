@@ -16,11 +16,15 @@ public class CarMovement : MonoBehaviour
 
     Rigidbody rb;
 
-    [Header("Drift/Trun")]
+    [Header("Drift/Trun")]  
     public float driftFactor = 0.95f;   // how much sideways grip is removed
     public float turnStrength = 5f;
     public float maxTurnAngle;
     private float carRotationY;
+
+    [Header("SteeringWheel")]
+    public Transform steeringWheel;
+    private float zSteerRotation;
 
     [Header("Bounce/Orientation")]
     public bool hitWall;
@@ -43,8 +47,16 @@ public class CarMovement : MonoBehaviour
     private void Update()
     {
         MyInput();
-        grounded = Physics.Raycast(transform.position, Vector3.down, groundCheckDistance, groundLayer);       
+        grounded = Physics.Raycast(transform.position, Vector3.down, groundCheckDistance, groundLayer);
+
+        //rotate the steering Wheel
+        zSteerRotation = steeringWheel.rotation.eulerAngles.z;
+        if (zSteerRotation > 180f) zSteerRotation -= 360f;
+
+        zSteerRotation = carRotationY;
+        steeringWheel.localRotation = Quaternion.Euler(31.025f, 0f, zSteerRotation);
     }
+
     void FixedUpdate()
     {
         //physics based movement should always be in fixed update
@@ -53,9 +65,6 @@ public class CarMovement : MonoBehaviour
         // car current Speed
         Vector3 currentVelocity = rb.linearVelocity;
         currentCarSpeed = currentVelocity.magnitude;
-
-        //currentSpeed = currentCarSpeed;
-        //Debug.Log("Current Speed: " + currentSpeed);
     }
 
    private void MovePlayer()
@@ -98,11 +107,9 @@ public class CarMovement : MonoBehaviour
         carRotationY = Mathf.Clamp(carRotationY, -maxTurnAngle, maxTurnAngle);
         rb.MoveRotation(Quaternion.Euler(0f, carRotationY, 0f));
 
-        //for reorientation
+        //for car reorientation
         yRotation = transform.rotation.eulerAngles.y;
         if (yRotation > 180f) yRotation -= 360f;
-
-
 
     }
 
@@ -123,13 +130,13 @@ public class CarMovement : MonoBehaviour
         {
             // once the collider hit the wall tag/layer
             // reorient player back to face forward
-            //rb.MoveRotation(Quaternion.Euler(0f, 0f, 0f));
+            rb.MoveRotation(Quaternion.Euler(0f, 0f, 0f));
 
-            if (yRotation > 10)
+            /*if (yRotation > 10)
             {
                 rb.MoveRotation(Quaternion.Euler(0f, 0f, 0f));
                 // add this back when bounce back is added
-                //rb.AddTorque(Vector3.down * 200f, ForceMode.Impulse);
+                rb.AddTorque(Vector3.down * 200f, ForceMode.Impulse);
                 Debug.Log("Rotate Left");
             }
             else 
@@ -137,9 +144,9 @@ public class CarMovement : MonoBehaviour
             {
                 rb.MoveRotation(Quaternion.Euler(0f, 0f, 0f));
                 // add this back when bounce back is added
-                // rb.AddTorque(Vector3.up * 200f, ForceMode.Impulse);
+                rb.AddTorque(Vector3.up * 200f, ForceMode.Impulse);
                 Debug.Log("Rotate Right");
-            }
+            }*/
         }
     }
     // double check just incase //no movement when airborn!

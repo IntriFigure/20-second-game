@@ -42,7 +42,7 @@ public class Timer : MonoBehaviour
                 timeRemaining = 0;
                 timerIsRunning = false;
                 //Debug.Log("time up");
-                SceneManager.LoadScene("Lose");
+                //SceneManager.LoadScene("Lose");
             }
         }
 
@@ -50,6 +50,6 @@ public class Timer : MonoBehaviour
 
     internal void ResetTime()
     {
-        timeRemaining = 10;
+        timeRemaining = 20;
     }
 }

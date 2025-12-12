@@ -37,12 +37,13 @@ public class TimerScript : MonoBehaviour
             if(sliderTimer <= 0)
             {
                 stopTimer = true;
+                SceneManager.LoadScene("Loose screen");
+
             }
 
             if (stopTimer == false)
             {
                 timerSlider.value = sliderTimer;
-                //SceneManager.LoadScene("Loose screen");
             }
         }
 

@@ -823,6 +823,7 @@ GameObject:
   - component: {fileID: 210624314}
   - component: {fileID: 210624316}
   - component: {fileID: 210624315}
+  - component: {fileID: 210624317}
   m_Layer: 0
   m_Name: ReplayManager
   m_TagString: Untagged
@@ -857,7 +858,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 75dabbfe362e6d64d8cccc9aa6d0137f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ReplayController
-  replay: {fileID: 1847154552}
+  replay: {fileID: 210624317}
 --- !u!114 &210624316
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -870,10 +871,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a9242ad371801f45a8825dba4298f09, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ObjectRecorder
-  target: {fileID: 1847154551}
+  playerTarget: {fileID: 1847154551}
+  cameraTarget: {fileID: 2144291122}
   isRecording: 1
-  recordInterval: 0
   recordedFrames: []
+--- !u!114 &210624317
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 210624313}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5db184229b0eb8c4fb1d822caebadad8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ReplayPlayer
+  recorder: {fileID: 210624316}
+  carTarget: {fileID: 1847154551}
+  cameraTarget: {fileID: 2144291122}
+  playbackSpeed: 1
 --- !u!1 &257149376
 GameObject:
   m_ObjectHideFlags: 0
@@ -6934,7 +6951,7 @@ GameObject:
   - component: {fileID: 1847154549}
   - component: {fileID: 1847154553}
   - component: {fileID: 1847154548}
-  - component: {fileID: 1847154552}
+  - component: {fileID: 1847154555}
   - component: {fileID: 1847154554}
   m_Layer: 0
   m_Name: Car 2 (W/Rigidbody)
@@ -7037,21 +7054,6 @@ Transform:
   - {fileID: 1874825851}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1847154552
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1847154547}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e4bd957c3781e1c4090224745a0ed1bd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PlayerRecorder
-  recorder: {fileID: 210624316}
-  targetToReplay: {fileID: 1847154551}
-  playbackSpeed: 1
 --- !u!65 &1847154553
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -7084,7 +7086,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
-  m_Resource: {fileID: 8300000, guid: 3c893e8619bad8c40a162f508fd6b636, type: 3}
+  m_Resource: {fileID: 8300000, guid: 40bb0bd8f5dd6ac46a4f27438ee4e022, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
@@ -7170,6 +7172,22 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &1847154555
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1847154547}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5db184229b0eb8c4fb1d822caebadad8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ReplayPlayer
+  recorder: {fileID: 210624316}
+  carTarget: {fileID: 1847154551}
+  cameraTarget: {fileID: 2144291122}
+  playbackSpeed: 1
 --- !u!1 &1850992552
 GameObject:
   m_ObjectHideFlags: 0
@@ -8571,6 +8589,7 @@ MonoBehaviour:
   carPos: {fileID: 1847154547}
   fpsCam: {fileID: 330585543}
   tpsCam: {fileID: 772153112}
+  isReplaying: 0
   thirdPersonOffSet: {x: 0, y: 0, z: 0}
   isFirstPerson: 1
   firstPersonOffSet: {x: 0.6, y: 1.6, z: -2}

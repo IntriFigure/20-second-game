@@ -3,33 +3,33 @@ using UnityEngine;
 
 public class ObjectRecorder : MonoBehaviour
 {
-    [Header("Target to Record")]
-    public Transform target;
+    [Header("Targets")]
+    public Transform playerTarget;
+    public Transform cameraTarget;
 
-    [Header("Recording Settings")]
+    [Header("Recording")]
     public bool isRecording = true;
-    public float recordInterval = 0f;
 
-    [HideInInspector]
     public List<FrameData> recordedFrames = new List<FrameData>();
 
-    private float timer = 0f;
-
-    void Update()
+    void FixedUpdate()
     {
-        if (!isRecording || target == null)
-            return;
-
-        timer += Time.deltaTime;
-
-        if (timer >= recordInterval)
+        if (!isRecording)
         {
-            recordedFrames.Add(new FrameData(target.position, target.rotation));
-            timer = 0f;
+            return;
         }
+
+        recordedFrames.Add(
+            new FrameData(
+                playerTarget.position,
+                playerTarget.rotation,
+                cameraTarget.position,
+                cameraTarget.rotation
+            )
+        );
     }
 
-    public void ClearRecording()
+    public void Clear()
     {
         recordedFrames.Clear();
     }

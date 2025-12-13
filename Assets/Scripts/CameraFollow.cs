@@ -7,6 +7,10 @@ public class CameraFollow : MonoBehaviour
     public GameObject fpsCam;
     public GameObject tpsCam;
 
+    // for replay
+    [Header("Replay")]
+    public bool isReplaying = false;
+
     [Header("Third Person Functions")]
     public Vector3 thirdPersonOffSet = new Vector3(0, 7, -7);
 
@@ -15,6 +19,7 @@ public class CameraFollow : MonoBehaviour
     public Vector3 firstPersonOffSet = new Vector3(0, 7, -7);
     public Camera playerCamera;
     public float mouseSensitivity = 100f;
+
     float xRotation = 0f;
     float yRotation = 0f;
 
@@ -36,6 +41,12 @@ public class CameraFollow : MonoBehaviour
 
     private void Update()
     {
+        // stop camera input
+        if (isReplaying)
+        {
+            return;
+        }
+
         if (isFirstPerson)
         {
             pizzaBox.SetActive(true);
@@ -90,6 +101,12 @@ public class CameraFollow : MonoBehaviour
     // Update is called once per frame
     void LateUpdate()
     {
+        //stop position overides for replay
+        if (isReplaying)
+        {
+            return;
+        }
+
         if (!isFirstPerson)
         {
             fpsCam.SetActive(false);
@@ -105,6 +122,12 @@ public class CameraFollow : MonoBehaviour
             transform.position = carPos.transform.TransformPoint(firstPersonOffSet);
             //transform.rotation = carPos.transform.rotation;
         }
+    }
+
+    // call by replayer
+    public void SetReplayRotation(Quaternion rotation)
+    {
+        transform.rotation = rotation;
     }
 
     IEnumerator CanShootCD()

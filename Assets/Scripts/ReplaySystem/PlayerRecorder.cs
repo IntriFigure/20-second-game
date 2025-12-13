@@ -30,8 +30,8 @@ public class PlayerRecorder : MonoBehaviour
         {
             FrameData frame = recorder.recordedFrames[index];
 
-            targetToReplay.position = frame.position;
-            targetToReplay.rotation = frame.rotation;
+            //targetToReplay.position = frame.position;
+            //targetToReplay.rotation = frame.rotation;
 
             index += Mathf.CeilToInt(playbackSpeed);
         }

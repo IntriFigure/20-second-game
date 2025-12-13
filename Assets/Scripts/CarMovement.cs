@@ -16,8 +16,9 @@ public class CarMovement : MonoBehaviour
 
     Rigidbody rb;
 
-    [Header("Drift/Trun")]  
-    public float driftFactor = 0.95f;   // how much sideways grip is removed
+    [Header("Drift/Trun")]
+    public bool noDrifting;
+    [Range(0f, 0.95f)] public float driftStrenght = 0.95f;   // how much sideways grip is removed
     public float turnStrength = 5f;
     public float maxTurnAngle;
     private float carRotationY;
@@ -28,9 +29,8 @@ public class CarMovement : MonoBehaviour
 
     [Header("Bounce/Orientation")]
     public bool hitWall;
-    public float yRotation;
+    //public float yRotation;
 
-    public Vector3 carD;
 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -95,12 +95,16 @@ public class CarMovement : MonoBehaviour
         // Steering rotation
         rb.MoveRotation(rb.rotation * Quaternion.Euler(0f, horizontalInput * turnStrength, 0f));
 
-        // Drift reduce sideways velocity
-        Vector3 localVel = transform.InverseTransformDirection(rb.linearVelocity);
-        //remove sideways grip
-        localVel.x *= Mathf.Lerp(1f, driftFactor, Mathf.Abs(horizontalInput));
-        rb.linearVelocity = transform.TransformDirection(localVel);
+        if (!noDrifting || grounded)
+        {
+            // Drift reduce sideways velocity  
+            Vector3 localVel = transform.InverseTransformDirection(rb.linearVelocity);
+            //remove sideways grip
+            localVel.x *= Mathf.Lerp(1f, driftStrenght, Mathf.Abs(horizontalInput));
 
+            rb.linearVelocity = transform.TransformDirection(localVel);
+        }
+        
         // clamping car rotation to max of positive and negartive 90 degrees
         carRotationY = rb.rotation.eulerAngles.y;
 
@@ -110,8 +114,8 @@ public class CarMovement : MonoBehaviour
         rb.MoveRotation(Quaternion.Euler(0f, carRotationY, 0f));
 
         //for car reorientation
-        yRotation = transform.rotation.eulerAngles.y;
-        if (yRotation > 180f) yRotation -= 360f;
+        /*yRotation = transform.rotation.eulerAngles.y;
+        if (yRotation > 180f) yRotation -= 360f;*/
 
     }
 
@@ -132,7 +136,12 @@ public class CarMovement : MonoBehaviour
         {
             // once the collider hit the wall tag/layer
             // reorient player back to face forward
-            rb.MoveRotation(Quaternion.Euler(carD));
+            rb.MoveRotation(Quaternion.Euler(0,0,0));
+
+            //cast a ray 
+            // hit.nomral
+            // addforce.impules
+
 
             /*if (yRotation > 10)
             {

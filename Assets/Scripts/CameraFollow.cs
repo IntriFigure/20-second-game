@@ -32,9 +32,6 @@ public class CameraFollow : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
         carM = GameObject.Find("Car 2 (W/Rigidbody)").GetComponent<CarMovement>();
-
-        //fur like the furry
-        carM.carD = new Vector3(0.1f, 0f, 0f);
     }
 
     private void Update()

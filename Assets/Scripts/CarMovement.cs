@@ -18,7 +18,7 @@ public class CarMovement : MonoBehaviour
 
     [Header("Drift/Trun")]
     public bool noDrifting;
-    [Range(0f, 0.95f)] public float driftStrenght = 0.95f;   // how much sideways grip is removed
+    [Range(0f, 2f)] public float driftStrenght = 0.95f;   // how much sideways grip is removed
     public float turnStrength = 5f;
     public float maxTurnAngle;
     private float carRotationY;

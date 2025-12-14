@@ -7,9 +7,7 @@ public class CameraFollow : MonoBehaviour
     public GameObject fpsCam;
     public GameObject tpsCam;
 
-    // for replay
-    [Header("Replay")]
-    public bool isReplaying = false;
+
 
     [Header("Third Person Functions")]
     public Vector3 thirdPersonOffSet = new Vector3(0, 7, -7);
@@ -41,11 +39,7 @@ public class CameraFollow : MonoBehaviour
 
     private void Update()
     {
-        // stop camera input
-        if (isReplaying)
-        {
-            return;
-        }
+
 
         if (isFirstPerson)
         {
@@ -105,10 +99,7 @@ public class CameraFollow : MonoBehaviour
     void LateUpdate()
     {
         //stop position overides for replay
-        if (isReplaying)
-        {
-            return;
-        }
+
 
         if (!isFirstPerson)
         {

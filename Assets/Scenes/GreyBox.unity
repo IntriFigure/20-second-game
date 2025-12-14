@@ -139526,7 +139526,6 @@ MonoBehaviour:
   carPos: {fileID: 1847154547}
   fpsCam: {fileID: 330585543}
   tpsCam: {fileID: 772153112}
-  isReplaying: 0
   thirdPersonOffSet: {x: 0, y: 0, z: 0}
   isFirstPerson: 1
   firstPersonOffSet: {x: 0.6, y: 1.6, z: -1.7}

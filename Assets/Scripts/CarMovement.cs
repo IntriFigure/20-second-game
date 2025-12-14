@@ -133,31 +133,30 @@ public class CarMovement : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("BonceWall"))
+        /*if (other.CompareTag("BonceWall"))
         {
             // once the collider hit the wall tag/layer
             // reorient player back to face forward
             rb.MoveRotation(Quaternion.Euler(0, 0, 0));
+        }*/
+        if (other.CompareTag("BonceWall") && !hitWall)
+        {
+            hitWall = true;
+            //rb.MoveRotation(Quaternion.Euler(0,0,0));
 
             //cast a ray 
             // hit.nomral
-            // addforce.impules
-
-            /*if (yRotation > 10)
+            // addforce.impules or rotate gameobject
+            RaycastHit hit;
+            if (Physics.Raycast(transform.position, transform.forward, out hit, 40f))
             {
-                rb.MoveRotation(Quaternion.Euler(0f, 0f, 0f));
-                // add this back when bounce back is added
-                rb.AddTorque(Vector3.up * 10f, ForceMode.Impulse);
-                Debug.Log("Rotate Left");
+                if (hit.collider.CompareTag("BonceWall"))
+                {
+                    Debug.Log("Knockback");
+                    Vector3 knockBack = Vector3.Reflect(rb.linearVelocity.normalized, hit.normal);
+                    rb.MoveRotation(Quaternion.Euler(knockBack));
+                }
             }
-            else 
-            if (yRotation < -10)
-            {
-                rb.MoveRotation(Quaternion.Euler(0f, 0f, 0f));
-                // add this back when bounce back is added
-                rb.AddTorque(Vector3.down * 10f, ForceMode.Impulse);
-                Debug.Log("Rotate Right");
-            }*/
         }
     }
     // double check just incase //no movement when airborn!

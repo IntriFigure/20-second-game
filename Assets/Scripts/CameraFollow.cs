@@ -7,8 +7,6 @@ public class CameraFollow : MonoBehaviour
     public GameObject fpsCam;
     public GameObject tpsCam;
 
-
-
     [Header("Third Person Functions")]
     public Vector3 thirdPersonOffSet = new Vector3(0, 7, -7);
 
@@ -17,7 +15,6 @@ public class CameraFollow : MonoBehaviour
     public Vector3 firstPersonOffSet = new Vector3(0, 7, -7);
     public Camera playerCamera;
     public float mouseSensitivity = 100f;
-
     float xRotation = 0f;
     float yRotation = 0f;
 
@@ -39,8 +36,6 @@ public class CameraFollow : MonoBehaviour
 
     private void Update()
     {
-
-
         if (isFirstPerson)
         {
             pizzaBox.SetActive(true);
@@ -63,20 +58,20 @@ public class CameraFollow : MonoBehaviour
             {
                 ThrowPizzAFunction();
                 StartCoroutine(CanShootCD());
-            }               
-        } 
+            }
+        }
         else
         {
             pizzaBox.SetActive(false);
-        }       
+        }
     }
 
     void ThrowPizzAFunction()
     {
-        GameObject prefb =Instantiate(pizzaBox, ThrowOrigin.position, Quaternion.identity);
+        GameObject prefb = Instantiate(pizzaBox, ThrowOrigin.position, Quaternion.identity);
         Rigidbody pizzaRB = prefb.GetComponent<Rigidbody>();
 
-        float shootWVelocity = throwForce * carM.currentCarSpeed;       
+        float shootWVelocity = throwForce * carM.currentCarSpeed;
         pizzaRB.AddForce(transform.forward * shootWVelocity, ForceMode.Impulse);
 
         /*Vector3 forceDirection = transform.forward;
@@ -91,16 +86,15 @@ public class CameraFollow : MonoBehaviour
             float shootWVelocity = throwForce * carM.currentCarSpeed;
             Vector3 forceToAdd = forceDirection * shootWVelocity;// + transform.up * throwUpwardForce;
             pizzaRB.AddForce(forceToAdd, ForceMode.Impulse);
-        }  */
+
+
+        }*/
         Destroy(prefb, 3f);
     }
-   
+
     // Update is called once per frame
     void LateUpdate()
     {
-        //stop position overides for replay
-
-
         if (!isFirstPerson)
         {
             fpsCam.SetActive(false);
@@ -109,19 +103,13 @@ public class CameraFollow : MonoBehaviour
             transform.position = carPos.transform.position + thirdPersonOffSet;
         }
         else
-        {         
+        {
             fpsCam.SetActive(true);
             tpsCam.SetActive(false);
             //transform.rotation = Quaternion.Euler(0, 0, 0);
             transform.position = carPos.transform.TransformPoint(firstPersonOffSet);
             //transform.rotation = carPos.transform.rotation;
         }
-    }
-
-    // call by replayer
-    public void SetReplayRotation(Quaternion rotation)
-    {
-        transform.rotation = rotation;
     }
 
     IEnumerator CanShootCD()
@@ -131,4 +119,6 @@ public class CameraFollow : MonoBehaviour
         canShoot = true;
     }
 }
+
+
 

@@ -39,7 +39,8 @@ public class TimerScript : MonoBehaviour
                 stopTimer = true;
                 
                 SceneManager.LoadScene("Loose screen");
-
+                Cursor.lockState = CursorLockMode.None;
+                Cursor.visible = true;
             }
 
             if (stopTimer == false)

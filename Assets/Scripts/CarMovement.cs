@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class CarMovement : MonoBehaviour
@@ -13,6 +14,7 @@ public class CarMovement : MonoBehaviour
     public bool grounded;
     public float groundCheckDistance = 0.2f;
     public LayerMask groundLayer;
+    public GameObject Explosion;
 
     Rigidbody rb;
 
@@ -125,7 +127,8 @@ public class CarMovement : MonoBehaviour
         if (collision.collider.CompareTag("Wall"))
         {
             Debug.Log("DIE");
-            SceneManager.LoadScene("GreyBox");
+            Instantiate(Explosion, steeringWheel.position, Quaternion.identity);
+            StartCoroutine(TransitionDelay());
         }
 
         // whats
@@ -158,6 +161,11 @@ public class CarMovement : MonoBehaviour
                 }
             }
         }
+    }
+    IEnumerator TransitionDelay()
+    {
+        yield return new WaitForSeconds(0.5f);
+        SceneManager.LoadScene("Crash Screen");
     }
     // double check just incase //no movement when airborn!
 }

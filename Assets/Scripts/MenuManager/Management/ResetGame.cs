@@ -6,9 +6,9 @@ using UnityEngine.SceneManagement;
 
 public class ResetGame : MonoBehaviour
 {
-/*    public GameObject SoundSettingCanvas;
-    public AudioSource winMusic;
-    public AudioSource loseMusic;*/
+    public GameObject SoundSettingCanvas;
+    //public AudioSource winMusic;
+    //public AudioSource loseMusic;
 
     private void Start()
     {
@@ -18,14 +18,14 @@ public class ResetGame : MonoBehaviour
 
     public void DisableCanvas()
     {
-/*        SoundSettingCanvas.SetActive(false);
-        SfxManager.sfxInstance.Audio.PlayOneShot(SfxManager.sfxInstance.Click);*/
+        SoundSettingCanvas.SetActive(false);
+        //SfxManager.sfxInstance.Audio.PlayOneShot(SfxManager.sfxInstance.Click);*/
     }
 
     public void EnableCanvas()
     {
-/*        SoundSettingCanvas.SetActive(true);
-        SfxManager.sfxInstance.Audio.PlayOneShot(SfxManager.sfxInstance.Click);*/
+       SoundSettingCanvas.SetActive(true);
+        //SfxManager.sfxInstance.Audio.PlayOneShot(SfxManager.sfxInstance.Click);*/
     }
 
     public void PlayAgain()

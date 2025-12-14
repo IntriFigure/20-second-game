@@ -11,7 +11,7 @@ public class Timer : MonoBehaviour
     public bool timerIsRunning = false;
     public Text timeText;
 
-
+    // dont use
     void Start()
     {
         timerIsRunning = true;

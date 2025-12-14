@@ -16,8 +16,9 @@ public class CarMovement : MonoBehaviour
 
     Rigidbody rb;
 
-    [Header("Drift/Trun")]  
-    public float driftFactor = 0.95f;   // how much sideways grip is removed
+    [Header("Drift/Trun")]
+    public bool noDrifting;
+    [Range(0f, 0.95f)] public float driftStrenght = 0.95f;   // how much sideways grip is removed
     public float turnStrength = 5f;
     public float maxTurnAngle;
     private float carRotationY;
@@ -28,7 +29,6 @@ public class CarMovement : MonoBehaviour
 
     [Header("Bounce/Orientation")]
     public bool hitWall;
-    public float yRotation;
 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -53,7 +53,7 @@ public class CarMovement : MonoBehaviour
         zSteerRotation = steeringWheel.rotation.eulerAngles.z;
         if (zSteerRotation > 180f) zSteerRotation -= 360f;
 
-        zSteerRotation = carRotationY *-1;
+        zSteerRotation = carRotationY * -1;
         steeringWheel.localRotation = Quaternion.Euler(31.025f, 0f, zSteerRotation);
     }
 
@@ -67,19 +67,20 @@ public class CarMovement : MonoBehaviour
         currentCarSpeed = currentVelocity.magnitude;
     }
 
-   private void MovePlayer()
+    private void MovePlayer()
     {
         // Always move forward if on ground
         if (grounded)
         {
             // Automatically moving Forward //!!! goesfaster as time goes on!!!
             rb.AddForce(orientation.forward * moveSpeed, ForceMode.Acceleration);
-        } else
+        }
+        else
         {
-            rb.AddForce(orientation.forward * (moveSpeed/2), ForceMode.Acceleration);
+            rb.AddForce(orientation.forward * (moveSpeed / 2), ForceMode.Acceleration);
         }
 
-         // your speed limit
+        // your speed limit
         Vector3 flatVel = new Vector3(rb.linearVelocity.x, 0f, rb.linearVelocity.z); // ignore vertical velocity
 
         if (flatVel.magnitude > maxSpeed)
@@ -93,11 +94,15 @@ public class CarMovement : MonoBehaviour
         // Steering rotation
         rb.MoveRotation(rb.rotation * Quaternion.Euler(0f, horizontalInput * turnStrength, 0f));
 
-        // Drift reduce sideways velocity
-        Vector3 localVel = transform.InverseTransformDirection(rb.linearVelocity);
-        //remove sideways grip
-        localVel.x *= Mathf.Lerp(1f, driftFactor, Mathf.Abs(horizontalInput));
-        rb.linearVelocity = transform.TransformDirection(localVel);
+        if (!noDrifting || grounded)
+        {
+            // Drift reduce sideways velocity  
+            Vector3 localVel = transform.InverseTransformDirection(rb.linearVelocity);
+            //remove sideways grip
+            localVel.x *= Mathf.Lerp(1f, driftStrenght, Mathf.Abs(horizontalInput));
+
+            rb.linearVelocity = transform.TransformDirection(localVel);
+        }
 
         // clamping car rotation to max of positive and negartive 90 degrees
         carRotationY = rb.rotation.eulerAngles.y;
@@ -108,8 +113,8 @@ public class CarMovement : MonoBehaviour
         rb.MoveRotation(Quaternion.Euler(0f, carRotationY, 0f));
 
         //for car reorientation
-        yRotation = transform.rotation.eulerAngles.y;
-        if (yRotation > 180f) yRotation -= 360f;
+        /*yRotation = transform.rotation.eulerAngles.y;
+        if (yRotation > 180f) yRotation -= 360f;*/
 
     }
 
@@ -120,7 +125,7 @@ public class CarMovement : MonoBehaviour
         if (collision.collider.CompareTag("Wall"))
         {
             Debug.Log("DIE");
-            SceneManager.LoadScene("SampleScene");
+            SceneManager.LoadScene("GreyBox");
         }
     }
 
@@ -130,13 +135,17 @@ public class CarMovement : MonoBehaviour
         {
             // once the collider hit the wall tag/layer
             // reorient player back to face forward
-            rb.MoveRotation(Quaternion.Euler(0f, 0f, 0f));
+            rb.MoveRotation(Quaternion.Euler(0, 0, 0));
+
+            //cast a ray 
+            // hit.nomral
+            // addforce.impules
 
             /*if (yRotation > 10)
             {
                 rb.MoveRotation(Quaternion.Euler(0f, 0f, 0f));
                 // add this back when bounce back is added
-                rb.AddTorque(Vector3.down * 200f, ForceMode.Impulse);
+                rb.AddTorque(Vector3.up * 10f, ForceMode.Impulse);
                 Debug.Log("Rotate Left");
             }
             else 
@@ -144,7 +153,7 @@ public class CarMovement : MonoBehaviour
             {
                 rb.MoveRotation(Quaternion.Euler(0f, 0f, 0f));
                 // add this back when bounce back is added
-                rb.AddTorque(Vector3.up * 200f, ForceMode.Impulse);
+                rb.AddTorque(Vector3.down * 10f, ForceMode.Impulse);
                 Debug.Log("Rotate Right");
             }*/
         }

@@ -6086,7 +6086,7 @@ MonoBehaviour:
   noDrifting: 1
   driftStrenght: 0.7
   turnStrength: 2
-  maxTurnAngle: 90
+  maxTurnAngle: 80
   steeringWheel: {fileID: 1428959864906001125}
   hitWall: 0
 --- !u!65 &1847154549

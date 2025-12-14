@@ -41235,7 +41235,7 @@ GameObject:
   - component: {fileID: 683392376}
   - component: {fileID: 683392375}
   m_Layer: 5
-  m_Name: Canvas (1)
+  m_Name: 'TImerCanvas '
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -47847,6 +47847,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b7ad230c3a2aaf94f85bfff108e49f55, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SoundsFXManger
+  soundFXObject: {fileID: 5471917839223248369, guid: 7829c41a81c7f22459374358306d2401, type: 3}
 --- !u!4 &813430727
 Transform:
   m_ObjectHideFlags: 0

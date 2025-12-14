@@ -1,2 +1,13 @@
 fileFormatVersion: 2
 guid: 539b076485a817e48a0d6c3c88b87ab5
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - pizzaSplash: {instanceID: 0}
+  - pizzaHit: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

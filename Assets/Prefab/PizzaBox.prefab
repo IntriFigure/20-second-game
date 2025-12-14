@@ -154,6 +154,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PizzaSplash
   pizzaSplash: {fileID: 9101521797972628134, guid: 518aa952621b0654e908633f2b29ffa7, type: 3}
+  pizzaHit: {fileID: 8300000, guid: 1a50eb400ccb2da4596473c9468fecac, type: 3}
 --- !u!96 &-1221039628810384728
 TrailRenderer:
   serializedVersion: 3

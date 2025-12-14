@@ -23,7 +23,7 @@ public class PizzaSplash : MonoBehaviour
         if (!collision.CompareTag("Player"))
         {
             Debug.Log("Hit");
-            //AudioSource.PlayClipAtPoint(pizzaHit, transform.position, 1f);
+            AudioSource.PlayClipAtPoint(pizzaHit, transform.position, 1f);
             var pizza = Instantiate(pizzaSplash, transform.position, Quaternion.identity);
             Destroy(pizza, 2f);
         }

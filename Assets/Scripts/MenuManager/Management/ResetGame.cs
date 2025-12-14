@@ -30,7 +30,7 @@ public class ResetGame : MonoBehaviour
 
     public void PlayAgain()
     {
-        SceneManager.LoadScene("PlayScene");
+        SceneManager.LoadScene("GreyBox");
 /*        SfxManager.sfxInstance.Audio.PlayOneShot(SfxManager.sfxInstance.Click);*/
     }
 

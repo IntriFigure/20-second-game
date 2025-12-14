@@ -71,7 +71,10 @@ public class CameraFollow : MonoBehaviour
         GameObject prefb =Instantiate(pizzaBox, ThrowOrigin.position, Quaternion.identity);
         Rigidbody pizzaRB = prefb.GetComponent<Rigidbody>();
 
-        Vector3 forceDirection = transform.forward;
+        float shootWVelocity = throwForce * carM.currentCarSpeed;       
+        pizzaRB.AddForce(transform.forward * shootWVelocity, ForceMode.Impulse);
+
+        /*Vector3 forceDirection = transform.forward;
         RaycastHit hit;
         if (Physics.Raycast(transform.position, transform.forward, out hit, 500f))
         {
@@ -83,7 +86,7 @@ public class CameraFollow : MonoBehaviour
             float shootWVelocity = throwForce * carM.currentCarSpeed;
             Vector3 forceToAdd = forceDirection * shootWVelocity;// + transform.up * throwUpwardForce;
             pizzaRB.AddForce(forceToAdd, ForceMode.Impulse);
-        }          
+        }  */
         Destroy(prefb, 3f);
     }
    

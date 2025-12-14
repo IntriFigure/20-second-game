@@ -127,6 +127,8 @@ public class CarMovement : MonoBehaviour
             Debug.Log("DIE");
             SceneManager.LoadScene("GreyBox");
         }
+
+        // whats
     }
 
     private void OnTriggerEnter(Collider other)

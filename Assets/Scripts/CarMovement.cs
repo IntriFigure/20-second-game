@@ -159,5 +159,10 @@ public class CarMovement : MonoBehaviour
             }
         }
     }
+
+    private void OnTriggerExit(Collider other)
+    {
+        hitWall = false;
+    }
     // double check just incase //no movement when airborn!
 }

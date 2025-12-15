@@ -50,7 +50,6 @@ public class ResetGame : MonoBehaviour
 
 
 
-
     /*    maybe add in intruction?
          
           public void Instruction()

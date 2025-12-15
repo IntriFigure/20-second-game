@@ -166,6 +166,8 @@ public class CarMovement : MonoBehaviour
     {
         yield return new WaitForSeconds(0.5f);
         SceneManager.LoadScene("Crash Screen");
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
     }
     // double check just incase //no movement when airborn!
 }

@@ -930,7 +930,7 @@ MonoBehaviour:
   m_FillRect: {fileID: 1605099874}
   m_HandleRect: {fileID: 364062473}
   m_Direction: 0
-  m_MinValue: -80
+  m_MinValue: 0.0001
   m_MaxValue: 1
   m_WholeNumbers: 0
   m_Value: 1
@@ -1201,10 +1201,10 @@ MonoBehaviour:
   m_FillRect: {fileID: 1062316579}
   m_HandleRect: {fileID: 1751669213}
   m_Direction: 0
-  m_MinValue: -80
-  m_MaxValue: 0
+  m_MinValue: 0.0001
+  m_MaxValue: 1
   m_WholeNumbers: 0
-  m_Value: 0
+  m_Value: 1
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
@@ -1475,7 +1475,7 @@ MonoBehaviour:
   m_FillRect: {fileID: 1607591841}
   m_HandleRect: {fileID: 1593298488}
   m_Direction: 0
-  m_MinValue: -80
+  m_MinValue: 0.0001
   m_MaxValue: 1
   m_WholeNumbers: 0
   m_Value: 1
@@ -3822,6 +3822,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SoundMixerManger
   audioMixer: {fileID: 24100000, guid: da9d5e1d746a2cb4a979295c789623b7, type: 2}
+  masterSlider: {fileID: 522663936}
+  soundFXSlider: {fileID: 953439619}
+  musicSlider: {fileID: 662800738}
 --- !u!4 &1956130158
 Transform:
   m_ObjectHideFlags: 0

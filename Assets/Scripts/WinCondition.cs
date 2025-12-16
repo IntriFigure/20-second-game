@@ -28,7 +28,7 @@ public class WinCondition : MonoBehaviour
     }
     IEnumerator SoundDelay()
     {
-        yield return new WaitForSeconds(1.5f);
+        yield return new WaitForSeconds(1);
         SceneManager.LoadScene("End Screen");
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
